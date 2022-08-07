@@ -1,0 +1,25 @@
+import timeit
+import matplotlib.pyplot as plt
+
+def kalangBersusuh(n):
+    for i in range(n):
+        for j in range(n):
+            for k in range(n):
+                m = i + j + k + 2019
+        
+def ujiKalangBersusuh(n):
+    ls = []
+    jangkau = range(1, n+1)
+    siap = 'from __main__ import kalangBersusuh'
+    for i in jangkau:
+        print('i = ',i)
+        t = timeit.timeit('kalangBersusuh(' + str(i) +')', setup = siap,number=1)
+        ls.append(t)
+    return ls
+
+n = 10
+LS = ujiKalangBersusuh(n)
+plt.plot(LS)
+skala = 7700000
+plt.plot([x*x/skala for x in range(1, n+1)])
+plt.show()
